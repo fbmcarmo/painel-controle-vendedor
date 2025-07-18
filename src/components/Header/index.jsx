@@ -11,7 +11,7 @@ export default function Header() {
                 <button className="text-[#333] font-medium hover:text-[#555]">Produtos</button>
             </div>
             <div className="flex items-center gap-4">
-                <button className="bg-[#333] text-white px-4 py-2 rounded-md hover:bg-[#555]">
+                <button className="bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white px-4 py-2 rounded-md">
                     Novo Produto
                 </button>
                 {/*<img src={profile} alt="Perfil" className="w-10 h-10 rounded-full object-cover" />*/}
