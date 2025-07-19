@@ -17,7 +17,6 @@ export default function Dashboard() {
     visitantes: 1238,
   });
 
-  // Dados de visitantes por dia (30 dias)
   const data = [
     { dia: "26", visitantes: 150 },
     { dia: "27", visitantes: 10 },
@@ -55,11 +54,10 @@ export default function Dashboard() {
     <PageWrapper>
       <div className="min-h-screen bg-gray-100 p-10">
         <div className="w-full flex flex-col items-start p-10 max-w-[1200px]">
-          <h1 className="text-3xl font-bold mb-10 text-[#1D1D1D]">Últimos 30 dias</h1>
+          <h1 className="text-3xl font-bold mb-2 text-[#1D1D1D]">Últimos 30 dias</h1>
           <p className="text-2xl text-[#666666]">Confira as estatísticas da sua loja no último mês</p>
         </div>
         <div className="flex flex-col md:flex-row gap-10">
-          {/* Lado esquerdo - cards métricos */}
           <div className="flex flex-col gap-6 md:w-1/3">
             <div className="bg-white p-6 rounded-xl shadow-md border-2 border-blue-200">
               <h2 className="text-blue-600 font-semibold mb-2">Produtos Vendidos</h2>
