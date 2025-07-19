@@ -3,6 +3,7 @@ import PageWrapper from "@/components/PageWrapper";
 import { useEffect, useState } from "react";
 import instance from "@/api/instance";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const router = useRouter();
@@ -13,7 +14,6 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
 
-  // filtros aplicados
   const [searchFiltro, setSearchFiltro] = useState("");
   const [statusFiltro, setStatusFiltro] = useState("");
 
@@ -48,6 +48,17 @@ export default function Home() {
     setStatusFiltro(status);
   }
 
+  async function excluirProduto(id) {
+    try {
+      await instance.delete(`/produtos/${id}`);
+      toast.success("Produto excluído com sucesso!");
+      buscarProdutos();
+    } catch (error) {
+      console.error(error);
+      toast.error("Erro ao excluir produto");
+    }
+  }
+
   const produtosFiltrados = produtos.filter((produto) => {
     const matchNome = produto.titulo.toLowerCase().includes(searchFiltro.toLowerCase());
     const matchStatus = statusFiltro ? produto.estado === statusFiltro : true;
@@ -61,6 +72,7 @@ export default function Home() {
           <h1 className="text-3xl font-bold text-[#1D1D1D]">Seus produtos</h1>
           <p className="text-2xl text-[#666666]">Acesse e gerencie a sua lista de produtos à venda</p>
         </section>
+
         <div className="flex w-full max-w-[1200px] gap-8 px-10 pb-20">
           <aside className="w-[340px] bg-white rounded-xl p-5 shadow-md h-fit">
             <h2 className="font-semibold text-lg mb-4">Filtrar</h2>
@@ -90,17 +102,34 @@ export default function Home() {
               </button>
             </div>
           </aside>
+
           <section className="flex flex-wrap gap-6 justify-start w-full items-stretch">
             {produtosFiltrados.map((produto) => (
-              <CardProduto
-                key={produto.id}
-                banner={produto.banner}
-                titulo={produto.titulo}
-                estado={produto.estado}
-                preco={produto.preco}
-                descricao={produto.descricao}
-                categoria={produto.categoria}
-              />
+              <div key={produto.id} className="flex flex-col gap-2">
+                <CardProduto
+                  banner={produto.banner}
+                  titulo={produto.titulo}
+                  estado={produto.estado}
+                  preco={produto.preco}
+                  descricao={produto.descricao}
+                  categoria={produto.categoria}
+                />
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => router.push(`/editarProduto/${produto.id}`)}
+                    className="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-semibold"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    onClick={() => excluirProduto(produto.id)}
+                    className="flex-1 bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md text-sm font-semibold"
+                  >
+                    Excluir
+                  </button>
+                </div>
+              </div>
             ))}
           </section>
         </div>
@@ -108,6 +137,7 @@ export default function Home() {
     </PageWrapper>
   );
 }
+
 
 
 
