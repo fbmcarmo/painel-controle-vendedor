@@ -33,7 +33,8 @@ export default function Home() {
   async function buscarProdutos() {
     setLoading(true);
     try {
-      const response = await instance.get(`/produtos`);
+      const usuarioId = localStorage.getItem("userId");
+      const response = await instance.get(`/user-produtos/${usuarioId}`);
       setProdutos(response.data);
     } catch (error) {
       console.error("Erro ao buscar produtos:", error);

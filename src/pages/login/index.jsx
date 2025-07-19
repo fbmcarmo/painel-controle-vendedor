@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import instance from "@/api/instance";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const router = useRouter();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     if (!email || !senha) {
@@ -14,7 +15,27 @@ export default function Login() {
       return;
     }
 
-    router.push("/");
+    try {
+      const response = await instance.post("/login", {
+        email: email,
+        password: senha,
+      });
+
+      await localStorage.setItem("token", response.data.token);
+
+      if (response.data.user) {
+        await localStorage.setItem("usuario", response.data.user.name);
+        await localStorage.setItem("userId", response.data.user.id);
+      }
+
+      //toast.success("Login realizado com sucesso");
+      window.location.href = "/";
+    } catch (error) {
+      console.log("Erro ao fazer login:", error);
+      //toast.error("Erro ao fazer login");
+    }
+    
+
   }
 
   return (

@@ -31,6 +31,7 @@ export default function CadastrarProduto() {
                 preco,
                 categoria,
                 descricao,
+                userId: localStorage.getItem("userId"),
             });
 
             toast.success("Produto cadastrado com sucesso!");
