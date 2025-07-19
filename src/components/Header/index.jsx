@@ -2,19 +2,22 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
-    var userName = "Usuário";
+    const [userName, setUserName] = useState("Usuário");
+    const [userFoto, setUserFoto] = useState("");
 
     useEffect(() => {
-        userName = localStorage.getItem("usuario");
+        const nome = localStorage.getItem("usuario");
+        const foto = localStorage.getItem("fotoPerfil");
+        if (nome) setUserName(nome);
+        if (foto) setUserFoto(foto);
     }, []);
 
     async function handleLogout() {
-        // Aqui você pode apagar o token, limpar o localStorage etc.
-        await localStorage.removeItem("token");
-        await localStorage.removeItem("usuario");
-        await localStorage.removeItem("userId");
+        localStorage.removeItem("token");
+        localStorage.removeItem("usuario");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("fotoPerfil");
         window.location.href = "/login";
-
     }
 
     return (
@@ -52,8 +55,15 @@ export default function Header() {
                 <div className="relative">
                     <button
                         onClick={() => setOpen(!open)}
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-md hover:bg-gray-200"
+                        className="flex items-center gap-3 px-3 py-2 bg-gray-100 rounded-md hover:bg-gray-200"
                     >
+                        {userFoto && (
+                            <img
+                                src={userFoto}
+                                alt="Foto Perfil"
+                                className="w-8 h-8 rounded-full object-cover border border-gray-300"
+                            />
+                        )}
                         <span className="text-sm text-gray-700">{userName}</span>
                         <svg
                             className={`w-4 h-4 transform transition ${open ? "rotate-180" : "rotate-0"}`}
@@ -81,3 +91,5 @@ export default function Header() {
         </header>
     );
 }
+
+

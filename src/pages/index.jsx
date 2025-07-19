@@ -105,7 +105,7 @@ export default function Home() {
 
           <section className="flex flex-wrap gap-6 justify-start w-full items-stretch">
             {produtosFiltrados.map((produto) => (
-              <div key={produto.id} className="flex flex-col gap-2">
+              <div key={produto.id} className="flex flex-col gap-2 w-[400px]">
                 <CardProduto
                   banner={produto.banner}
                   titulo={produto.titulo}
