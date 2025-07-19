@@ -60,7 +60,6 @@ export default function Home() {
           <h1 className="text-3xl font-bold text-[#1D1D1D]">Seus produtos</h1>
           <p className="text-2xl text-[#666666]">Acesse e gerencie a sua lista de produtos à venda</p>
         </section>
-
         <div className="flex w-full max-w-[1200px] gap-8 px-10 pb-20">
           <aside className="w-[340px] bg-white rounded-xl p-5 shadow-md h-fit">
             <h2 className="font-semibold text-lg mb-4">Filtrar</h2>
@@ -72,7 +71,6 @@ export default function Home() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-
               <select
                 className={`w-full border-0 border-b-2 border-gray-300 focus:border-[#F24D0D] outline-none px-0 py-2 bg-transparent ${!status ? "text-gray-400" : "text-black"}`}
                 value={status}
@@ -83,7 +81,6 @@ export default function Home() {
                 <option value="Vendido">Vendido</option>
                 <option value="Cancelado">Cancelado</option>
               </select>
-
               <button
                 onClick={aplicarFiltro}
                 className="w-full bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white rounded-md py-2 font-semibold transition"
@@ -92,7 +89,6 @@ export default function Home() {
               </button>
             </div>
           </aside>
-
           <section className="flex flex-wrap gap-6 justify-start w-full items-stretch">
             {produtosFiltrados.map((produto) => (
               <CardProduto

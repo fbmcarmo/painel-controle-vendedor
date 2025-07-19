@@ -38,11 +38,11 @@ export default function CardProduto({
                   ? "#E6410FFF"
                   : categoria === "Papelaria"
                   ? "#11DAF4FF"
-                  : categoria === "Saude e beleza"
+                  : categoria === "Saúde e Beleza"
                   ? "#ED0CB5FF"
-                  : categoria === "Utensilio"
+                  : categoria === "Utensílio"
                   ? "#14ED0CFF"
-                  : categoria === "Vestuario"
+                  : categoria === "Vestuário"
                   ? "#E9ED0CFF"
                   : "#140808E9",
             }}>
