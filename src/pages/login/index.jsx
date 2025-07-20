@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import instance from "@/api/instance";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { MdEmail } from "react-icons/md";
+import { FiKey, FiEye, FiEyeOff } from "react-icons/fi";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState(false);
   const router = useRouter();
 
   async function handleSubmit(event) {
@@ -35,8 +38,6 @@ export default function Login() {
       console.log("Erro ao fazer login:", error);
       toast.error("Erro ao fazer login");
     }
-    
-
   }
 
   return (
@@ -57,20 +58,46 @@ export default function Login() {
         <h1 className="text-4xl font-bold mb-2 text-[#1D1D1D]">Acesse sua conta</h1>
         <p className="text-gray-500 mb-10">Informe seu e-mail e senha para entrar</p>
         <form onSubmit={handleSubmit} className="w-full max-w-[400px] flex flex-col gap-6">
-          <input
-            type="email"
-            placeholder="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="border-b border-gray-300 focus:border-[#F24D0D] outline-none px-3 py-2"
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            className="border-b border-gray-300 focus:border-[#F24D0D] outline-none px-3 py-2"
-          />
+          {/* Label E-mail */}
+          <label className="text-sm font-semibold text-gray-700">E-MAIL</label>
+          <div className="relative">
+            <MdEmail
+              size={20}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            />
+            <input
+              type="email"
+              placeholder="Seu e-mail cadastrado"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border-b border-gray-300 focus:border-[#F24D0D] outline-none px-10 py-2"
+            />
+          </div>
+
+          {/* Label Senha */}
+          <label className="text-sm font-semibold text-gray-700 mt-4">SENHA</label>
+          <div className="relative">
+            <FiKey
+              size={20}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            />
+            <input
+              type={mostrarSenha ? "text" : "password"}
+              placeholder="Sua senha de acesso"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              className="w-full border-b border-gray-300 focus:border-[#F24D0D] outline-none px-10 py-2 pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setMostrarSenha(!mostrarSenha)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#F24D0D] transition"
+              aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+            >
+              {mostrarSenha ? <FiEyeOff size={20} /> : <FiEye size={20} />}
+            </button>
+          </div>
+
           <button
             type="submit"
             className="mt-6 w-full py-3 rounded-md bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white font-semibold transition"
@@ -91,6 +118,9 @@ export default function Login() {
     </div>
   );
 }
+
+
+
 
 
 
