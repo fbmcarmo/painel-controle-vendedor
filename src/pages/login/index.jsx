@@ -75,7 +75,7 @@ export default function Login() {
             type="submit"
             className="mt-6 w-full py-3 rounded-md bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white font-semibold transition"
           >
-            Entrar
+            Acessar
           </button>
         </form>
         <div className="mt-10 text-center">
@@ -84,7 +84,7 @@ export default function Login() {
             onClick={() => router.push("/cadastrar")}
             className="border border-gray-300 px-6 py-2 rounded-md text-gray-700 hover:bg-gray-100 transition"
           >
-            Criar conta
+            Cadastrar
           </button>
         </div>
       </div>
