@@ -3,6 +3,7 @@ import { useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { FiImage } from "react-icons/fi";
 
 export default function CadastrarProduto() {
     const [imagemPreview, setImagemPreview] = useState("");
@@ -65,17 +66,23 @@ export default function CadastrarProduto() {
 
                     <div className="flex w-full max-w-[1200px] gap-10 px-10 pb-20">
                         <div className="flex flex-col gap-2 w-[300px]">
-                            <div className="w-full h-[300px] bg-[#F5EAEA] rounded-xl shadow-md flex items-center justify-center text-center text-[#333] font-semibold cursor-pointer overflow-hidden">
+                            <div className="w-full h-[300px] bg-[#F5EAEA] rounded-xl shadow-md 
+                            flex items-center justify-center text-center text-[#333] font-semibold cursor-pointer overflow-hidden">
                                 {imagemPreview ? (
-                                    <img src={imagemPreview} alt="Pré-visualização" className="w-full h-full object-cover rounded-xl" />
+                                    <img src={imagemPreview} alt="Pré-visualização" className="w-full 
+                                    h-full object-cover rounded-xl" />
                                 ) : (
-                                    <span>Imagem do produto</span>
+                                    <div className="flex flex-col items-center justify-center gap-2 text-[#F24D0D]">
+                                        <FiImage size={50} />
+                                        <span className="text-sm text-gray-500">Selecione a imagem do produto</span>
+                                    </div>
                                 )}
                             </div>
                             <input
                                 type="text"
                                 placeholder="Cole o link da imagem"
-                                className="border-b border-gray-300 focus:border-[#F24D0D] outline-none px-3 py-2 bg-transparent"
+                                className="border-b border-gray-300 focus:border-[#F24D0D] 
+                                outline-none px-3 py-2 bg-transparent"
                                 value={banner}
                                 onChange={(e) => {
                                     setImagemPreview(e.target.value);
@@ -96,7 +103,8 @@ export default function CadastrarProduto() {
                                             placeholder="Nome do produto"
                                             value={titulo}
                                             onChange={(e) => setTitulo(e.target.value)}
-                                            className="border-b border-gray-300 focus:border-[#F24D0D] outline-none px-3 py-2 bg-transparent"
+                                            className="border-b border-gray-300 focus:border-[#F24D0D] 
+                                            outline-none px-3 py-2 bg-transparent"
                                         />
                                     </div>
                                     <div className="flex flex-col w-[150px]">
@@ -106,7 +114,8 @@ export default function CadastrarProduto() {
                                             placeholder="R$ 0,00"
                                             value={preco}
                                             onChange={(e) => setPreco(e.target.value)}
-                                            className="border-b border-gray-300 focus:border-[#F24D0D] outline-none px-3 py-2 bg-transparent"
+                                            className="border-b border-gray-300 focus:border-[#F24D0D] 
+                                            outline-none px-3 py-2 bg-transparent"
                                         />
                                     </div>
                                 </div>
@@ -117,7 +126,8 @@ export default function CadastrarProduto() {
                                         placeholder="Escreva detalhes sobre o produto, tamanho, características"
                                         value={descricao}
                                         onChange={(e) => setDescricao(e.target.value)}
-                                        className="w-full border-b border-gray-300 focus:border-[#F24D0D] outline-none px-3 py-2 resize-none bg-transparent"
+                                        className="w-full border-b border-gray-300 focus:border-[#F24D0D] 
+                                        outline-none px-3 py-2 resize-none bg-transparent"
                                         rows={4}
                                     />
                                 </div>
@@ -126,7 +136,8 @@ export default function CadastrarProduto() {
                                     <div className="flex flex-col flex-1">
                                         <label className="text-sm text-gray-700 mb-1">Status</label>
                                         <select
-                                            className="border-b border-gray-300 focus:border-[#F24D0D] outline-none px-3 py-2 bg-transparent text-gray-500"
+                                            className="border-b border-gray-300 focus:border-[#F24D0D] 
+                                            outline-none px-3 py-2 bg-transparent text-gray-500"
                                             value={estado}
                                             onChange={(e) => setEstado(e.target.value)}
                                         >
@@ -139,7 +150,8 @@ export default function CadastrarProduto() {
                                     <div className="flex flex-col flex-1">
                                         <label className="text-sm text-gray-700 mb-1">Categoria</label>
                                         <select
-                                            className="border-b border-gray-300 focus:border-[#F24D0D] outline-none px-3 py-2 bg-transparent text-gray-500"
+                                            className="border-b border-gray-300 focus:border-[#F24D0D] 
+                                            outline-none px-3 py-2 bg-transparent text-gray-500"
                                             value={categoria}
                                             onChange={(e) => setCategoria(e.target.value)}
                                         >
@@ -159,8 +171,8 @@ export default function CadastrarProduto() {
                                 <button
                                     type="button"
                                     onClick={handleCancel}
-                                    className="px-6 py-2 rounded-md border border-gray-300
-                                     text-gray-700 hover:bg-gray-100 transition"
+                                    className="px-6 py-2 rounded-md border
+                                     border-gray-300 text-gray-700 hover:bg-gray-100 transition"
                                 >
                                     Cancelar
                                 </button>
@@ -179,6 +191,8 @@ export default function CadastrarProduto() {
         </PageWrapper>
     );
 }
+
+
 
 
 

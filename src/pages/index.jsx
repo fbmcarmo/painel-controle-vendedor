@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import instance from "@/api/instance";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { FiSearch, FiTag } from "react-icons/fi";
 
 export default function Home() {
   const router = useRouter();
@@ -77,23 +78,36 @@ export default function Home() {
           <aside className="w-[340px] bg-white rounded-xl p-5 shadow-md h-fit">
             <h2 className="font-semibold text-lg mb-4">Filtrar</h2>
             <div className="flex flex-col gap-6">
-              <input
-                type="text"
-                placeholder="Pesquisar"
-                className="w-full border-0 border-b-2 border-gray-300 focus:border-[#F24D0D] outline-none px-0 py-2 bg-transparent"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <select
-                className={`w-full border-0 border-b-2 border-gray-300 focus:border-[#F24D0D] outline-none px-0 py-2 bg-transparent ${!status ? "text-gray-400" : "text-black"}`}
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-              >
-                <option value="" disabled>Status</option>
-                <option value="Anunciado">Anunciado</option>
-                <option value="Vendido">Vendido</option>
-                <option value="Cancelado">Cancelado</option>
-              </select>
+
+              {/* Campo de busca com ícone de lupa */}
+              <div className="relative w-full">
+                <FiSearch className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Pesquisar"
+                  className="w-full pl-6 border-0 border-b-2 border-gray-300 focus:border-[#F24D0D] outline-none py-2 bg-transparent"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+              </div>
+
+              {/* Select com ícone de etiqueta */}
+              <div className="relative w-full">
+                <FiTag className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <select
+                  className={`w-full pl-6 border-0 border-b-2 border-gray-300 focus:border-[#F24D0D] outline-none py-2 bg-transparent ${
+                    !status ? "text-gray-400" : "text-black"
+                  }`}
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option value="" disabled>Status</option>
+                  <option value="Anunciado">Anunciado</option>
+                  <option value="Vendido">Vendido</option>
+                  <option value="Cancelado">Cancelado</option>
+                </select>
+              </div>
+
               <button
                 onClick={aplicarFiltro}
                 className="w-full bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white rounded-md py-2 font-semibold transition"

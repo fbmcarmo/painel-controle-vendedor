@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import PageWrapper from "@/components/PageWrapper";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { FiArrowLeft, FiCheck } from "react-icons/fi";
+import { ImBlocked } from "react-icons/im";
 
 export default function EditarProduto() {
     const [imagemPreview, setImagemPreview] = useState("");
@@ -64,6 +66,42 @@ export default function EditarProduto() {
         }
     }
 
+    async function handleMarkAsSold() {
+        try {
+            await instance.put(`/produtos/${id}`, {
+                banner,
+                titulo,
+                estado: "Vendido",
+                preco,
+                categoria,
+                descricao,
+            });
+            toast.success("Produto marcado como vendido!");
+            router.push("/");
+        } catch (error) {
+            console.error(error);
+            toast.error("Erro ao marcar como vendido!");
+        }
+    }
+
+    async function handleDeactivateAd() {
+        try {
+            await instance.put(`/produtos/${id}`, {
+                banner,
+                titulo,
+                estado: "Cancelado",
+                preco,
+                categoria,
+                descricao,
+            });
+            toast.success("Anúncio desativado com sucesso!");
+            router.push("/");
+        } catch (error) {
+            console.error(error);
+            toast.error("Erro ao desativar anúncio!");
+        }
+    }
+
     function handleCancel() {
         router.push("/");
     }
@@ -72,9 +110,41 @@ export default function EditarProduto() {
         <PageWrapper>
             <form onSubmit={handleSubmit}>
                 <div className="w-full min-h-screen flex flex-col items-center bg-[#FBF4F4]">
-                    <section className="w-full flex flex-col items-start p-10 max-w-[1200px]">
+                    <section className="w-full flex flex-col p-10 max-w-[1200px]">
+                        <button
+                            onClick={() => router.back()}
+                            type="button"
+                            className="flex items-center gap-2 text-[#F24D0D] font-medium mb-4"
+                        >
+                            <FiArrowLeft size={18} />
+                            Voltar
+                        </button>
+
                         <h1 className="text-3xl font-bold text-[#1D1D1D]">Editar Produto</h1>
-                        <p className="text-2xl text-[#666666]">Gerencie as informações do produto cadastrado</p>
+
+                        <div className="flex items-center justify-between w-full">
+                            <p className="text-2xl text-[#666666]">Gerencie as informações do produto cadastrado</p>
+
+                            <div className="flex gap-8 items-center">
+                                <button
+                                    onClick={handleMarkAsSold}
+                                    type="button"
+                                    className="flex items-center gap-2 text-[#F24D0D] font-medium transition hover:underline"
+                                >
+                                    <FiCheck size={18} />
+                                    Marcar como vendido
+                                </button>
+
+                                <button
+                                    onClick={handleDeactivateAd}
+                                    type="button"
+                                    className="flex items-center gap-2 text-[#F24D0D] font-medium transition hover:underline"
+                                >
+                                    <ImBlocked size={18} />
+                                    Desativar anúncio
+                                </button>
+                            </div>
+                        </div>
                     </section>
 
                     <div className="flex w-full max-w-[1200px] gap-10 px-10 pb-20">
@@ -191,3 +261,4 @@ export default function EditarProduto() {
         </PageWrapper>
     );
 }
+
