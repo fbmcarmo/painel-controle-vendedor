@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FiPlus, FiBox, FiLayout } from "react-icons/fi";
+import { FiPlus, FiBox, FiLayout, FiLogOut } from "react-icons/fi";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
@@ -117,9 +117,10 @@ export default function Header() {
                         <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50">
                             <button
                                 onClick={handleLogout}
-                                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                className="w-full flex justify-between items-center px-4 py-2 text-sm text-[#F24D0D] hover:bg-gray-100"
                             >
-                                Logout
+                                <span>Sair</span>
+                                <FiLogOut className="w-4 h-4" />
                             </button>
                         </div>
                     )}
@@ -128,6 +129,7 @@ export default function Header() {
         </header>
     );
 }
+
 
 
 

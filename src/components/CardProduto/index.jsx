@@ -6,9 +6,38 @@ export default function CardProduto({
   descricao,
   categoria,
 }) {
+  // Cores
+  const bgEstado =
+    estado === "Anunciado"
+      ? "#0095E5"
+      : estado === "Vendido"
+      ? "#28A745"
+      : estado === "Cancelado"
+      ? "#666666"
+      : "#DAEC11FF";
+
+  const textColorEstado = bgEstado === "#DAEC11FF" ? "black" : "white";
+
+  const bgCategoria =
+    categoria === "Móvel"
+      ? "#3D3D3D"
+      : categoria === "Brinquedo"
+      ? "#E6410FFF"
+      : categoria === "Papelaria"
+      ? "#11DAF4FF"
+      : categoria === "Saúde e Beleza"
+      ? "#ED0CB5FF"
+      : categoria === "Utensílio"
+      ? "#14ED0CFF"
+      : categoria === "Vestuário"
+      ? "#E9ED0CFF"
+      : "#140808E9";
+
+  const textColorCategoria = bgCategoria === "#E9ED0CFF" ? "black" : "white";
+
   return (
     <div className="w-full max-w-sm md:max-w-[400px] flex flex-col rounded-2xl 
-      bg-white shadow-2xl border border-[#e5e7eb] hover:border-[#8B4513] transition-all duration-300">
+      bg-white shadow-2xl border border-[#e5e7eb] hover:border-[#8292f0] transition-all duration-300">
       <div className="w-full h-[220px] relative">
         <img
           src={banner}
@@ -16,36 +45,22 @@ export default function CardProduto({
           className="w-full h-full object-cover rounded-2xl"
         />
         <div className="absolute top-2 right-2 flex items-center gap-2">
-          <span className="px-2 py-0.5 rounded-md text-xs text-white font-semibold"
+          <span
+            className="px-2 py-0.5 rounded-md text-xs font-semibold"
             style={{
-              backgroundColor:
-                estado === "Anunciado"
-                  ? "#0095E5"
-                  : estado === "Vendido"
-                  ? "#28A745"
-                  : estado === "Cancelado"
-                  ? "#666666"
-                  : "#DAEC11FF",
-            }}>
+              backgroundColor: bgEstado,
+              color: textColorEstado,
+            }}
+          >
             {estado}
           </span>
-          <span className="px-2 py-0.5 bg-[#8B4513]/10 text-white text-xs rounded-md font-semibold"
+          <span
+            className="px-2 py-0.5 text-xs rounded-md font-semibold"
             style={{
-              backgroundColor:
-                categoria === "Móvel"
-                  ? "#3D3D3D"
-                  : categoria === "Brinquedo"
-                  ? "#E6410FFF"
-                  : categoria === "Papelaria"
-                  ? "#11DAF4FF"
-                  : categoria === "Saúde e Beleza"
-                  ? "#ED0CB5FF"
-                  : categoria === "Utensílio"
-                  ? "#14ED0CFF"
-                  : categoria === "Vestuário"
-                  ? "#E9ED0CFF"
-                  : "#140808E9",
-            }}>
+              backgroundColor: bgCategoria,
+              color: textColorCategoria,
+            }}
+          >
             {categoria}
           </span>
         </div>
