@@ -59,7 +59,6 @@ export default function Login() {
         <h1 className="text-4xl font-bold mb-2 text-[#1D1D1D]">Acesse sua conta</h1>
         <p className="text-gray-500 mb-10">Informe seu e-mail e senha para entrar</p>
         <form onSubmit={handleSubmit} className="w-full max-w-[400px] flex flex-col gap-6">
-          {/* Label E-mail */}
           <label className="text-sm font-semibold text-gray-700">E-MAIL</label>
           <div className="relative">
             <MdEmail
@@ -74,8 +73,6 @@ export default function Login() {
               className="w-full border-b border-gray-300 focus:border-[#F24D0D] outline-none px-10 py-2"
             />
           </div>
-
-          {/* Label Senha */}
           <label className="text-sm font-semibold text-gray-700 mt-4">SENHA</label>
           <div className="relative">
             <FiKey
@@ -98,7 +95,6 @@ export default function Login() {
               {mostrarSenha ? <FiEyeOff size={20} /> : <FiEye size={20} />}
             </button>
           </div>
-
           <button
             type="submit"
             className="mt-6 w-full py-3 rounded-md bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white font-semibold transition"
