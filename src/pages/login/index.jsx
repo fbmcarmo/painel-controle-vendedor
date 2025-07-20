@@ -30,6 +30,7 @@ export default function Login() {
       if (response.data.user) {
         await localStorage.setItem("usuario", response.data.user.name);
         await localStorage.setItem("userId", response.data.user.id);
+        await localStorage.setItem("fotoPerfil", response.data.user.banner);
       }
 
       toast.success("Login realizado com sucesso");
