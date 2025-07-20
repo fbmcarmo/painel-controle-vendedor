@@ -20,21 +20,21 @@ export default function Cadastrar() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    // if (!nome || !email || !senha || !confirmarSenha) {
-    //   return toast.error("Preencha todos os campos");
-    // }
+    if (!nome || !email || !senha || !confirmarSenha) {
+       return toast.error("Preencha todos os campos");
+     }
 
-    // if (email.length < 8 || senha.length < 8) {
-    //   return toast.error("E-mail ou senha inválidos");
-    // }
+     if (email.length < 8 || senha.length < 8) {
+       return toast.error("E-mail ou senha inválidos");
+     }
 
-    // if (senha.length > 8) {
-    //   return toast.error("A senha deve conter no máximo 8 caracteres");
-    // }
+     if (senha.length > 8) {
+       return toast.error("A senha deve conter no máximo 8 caracteres");
+     }
 
-    // if (senha !== confirmarSenha) {
-    //   return toast.error("As senhas não coincidem");
-    // }
+     if (senha !== confirmarSenha) {
+       return toast.error("As senhas não coincidem");
+     }
 
     try {
       await instance.post('/users', {

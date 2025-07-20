@@ -77,8 +77,6 @@ export default function Dashboard() {
               <p className="text-sm text-blue-300 mt-1">Detalhes adicionais aqui</p>
             </div>
           </div>
-
-          {/* Lado direito - gráfico */}
           <div className="bg-white p-8 rounded-xl shadow-md md:w-2/3">
             <h2 className="text-xl font-bold text-[#1D1D1D] mb-6">Visitantes por Dia do Mês</h2>
             <ResponsiveContainer width="100%" height={300}>
