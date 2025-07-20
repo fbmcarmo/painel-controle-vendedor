@@ -4,6 +4,8 @@ export default function Header() {
     const [open, setOpen] = useState(false);
     const [userName, setUserName] = useState("Usuário");
     const [userFoto, setUserFoto] = useState("");
+    const [showTooltip, setShowTooltip] = useState(false);
+    const [hoverTimeout, setHoverTimeout] = useState(null);
 
     useEffect(() => {
         const nome = localStorage.getItem("usuario");
@@ -19,6 +21,18 @@ export default function Header() {
         localStorage.removeItem("fotoPerfil");
         window.location.href = "/login";
     }
+
+    const handleMouseEnter = () => {
+        const timeout = setTimeout(() => {
+            setShowTooltip(true);
+        }, 7000);
+        setHoverTimeout(timeout);
+    };
+
+    const handleMouseLeave = () => {
+        clearTimeout(hoverTimeout);
+        setShowTooltip(false);
+    };
 
     return (
         <header className="w-full bg-[#FBF4F4] flex items-center justify-between px-8 py-4">
@@ -45,12 +59,21 @@ export default function Header() {
             </div>
 
             <div className="relative flex items-center gap-4">
-                <button
-                    className="bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white px-4 py-2 rounded-md"
-                    onClick={() => (window.location.href = "/cadastrarProduto")}
-                >
-                    Novo Produto
-                </button>
+                <div className="relative">
+                    <button
+                        className="bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white px-4 py-2 rounded-md relative"
+                        onClick={() => (window.location.href = "/cadastrarProduto")}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        Novo Produto
+                        {showTooltip && (
+                            <span className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded shadow">
+                                Tá esperando o quê? Boraa moeer!! 🚀
+                            </span>
+                        )}
+                    </button>
+                </div>
 
                 <div className="relative">
                     <button
@@ -91,5 +114,6 @@ export default function Header() {
         </header>
     );
 }
+
 
 
