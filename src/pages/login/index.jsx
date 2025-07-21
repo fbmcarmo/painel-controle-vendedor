@@ -42,22 +42,26 @@ export default function Login() {
   }
 
   return (
-    <div className="relative flex w-full min-h-screen">
+    <div className="relative flex flex-col md:flex-row w-full min-h-screen bg-white">
       <img
         src="/logo2.svg"
         alt="logo2"
-        className="absolute top-6 left-6 w-[180px] h-auto"
+        className="absolute top-6 left-6 w-[120px] sm:w-[180px] h-auto z-10"
       />
-      <div className="w-1/2 flex items-center justify-center bg-[#F5F5F5] rounded-l-3xl overflow-hidden">
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-[#F5F5F5] rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none overflow-hidden order-1 md:order-1 h-64 md:h-auto">
         <img
           src="/cover.jpg"
           alt="imagem-de-fundo"
           className="max-w-full max-h-full object-contain"
         />
       </div>
-      <div className="w-1/2 flex flex-col justify-center items-center p-20 bg-white rounded-r-3xl overflow-hidden">
-        <h1 className="text-4xl font-bold mb-2 text-[#1D1D1D]">Acesse sua conta</h1>
-        <p className="text-gray-500 mb-10">Informe seu e-mail e senha para entrar</p>
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 sm:px-12 py-10 md:p-20 bg-white rounded-b-3xl md:rounded-r-3xl md:rounded-tl-none overflow-hidden order-2 md:order-2">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-[#1D1D1D] text-center md:text-left">
+          Acesse sua conta
+        </h1>
+        <p className="text-sm sm:text-base text-gray-500 mb-10 text-center md:text-left">
+          Informe seu e-mail e senha para entrar
+        </p>
         <form onSubmit={handleSubmit} className="w-full max-w-[400px] flex flex-col gap-6">
           <label className="text-sm font-semibold text-gray-700">E-MAIL</label>
           <div className="relative">
@@ -115,6 +119,9 @@ export default function Login() {
     </div>
   );
 }
+
+
+
 
 
 

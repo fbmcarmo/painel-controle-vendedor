@@ -6,7 +6,7 @@ export default function CardProduto({
   descricao,
   categoria,
 }) {
-  // Cores
+
   const bgEstado =
     estado === "Anunciado"
       ? "#0095E5"
@@ -36,13 +36,13 @@ export default function CardProduto({
   const textColorCategoria = bgCategoria === "#E9ED0CFF" ? "black" : "white";
 
   return (
-    <div className="w-full max-w-sm md:max-w-[400px] flex flex-col rounded-2xl 
+    <div className="w-full sm:w-[300px] md:w-[400px] flex flex-col rounded-2xl 
       bg-white shadow-2xl border border-[#e5e7eb] hover:border-[#8292f0] transition-all duration-300">
       <div className="w-full h-[220px] relative">
         <img
           src={banner}
           alt={titulo}
-          className="w-full h-full object-cover rounded-2xl"
+          className="w-full h-full object-cover rounded-t-2xl"
         />
         <div className="absolute top-2 right-2 flex items-center gap-2">
           <span
@@ -65,20 +65,21 @@ export default function CardProduto({
           </span>
         </div>
       </div>
-      <div className="flex flex-col px-4 py-3 gap-1">
-        <div className="flex items-start justify-between">
-          <p className="text-[18px] font-bold text-[#3E2723] max-w-[70%] line-clamp-2">
+      <div className="flex flex-col px-4 py-3 gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-0">
+          <p className="text-base sm:text-lg font-bold text-[#3E2723] line-clamp-2">
             {titulo}
           </p>
-          <span className="text-lg font-bold text-[#8B4513] whitespace-nowrap">
+          <span className="text-base sm:text-lg font-bold text-[#8B4513] whitespace-nowrap">
             R$ {preco}
           </span>
         </div>
-        <p className="text-[14px] text-[#374167] leading-snug">{descricao}</p>
+        <p className="text-sm text-[#374167] leading-snug">{descricao}</p>
       </div>
     </div>
   );
 }
+
 
 
 

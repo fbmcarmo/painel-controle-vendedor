@@ -2,11 +2,11 @@ import Header from "../Header";
 
 export default function PageWrapper({ children }) {
   return (
-    <div className="w-full h-full min-h-screen flex flex-col">
+    <div className="w-full min-h-screen flex flex-col bg-[#FBF4F4] overflow-x-hidden">
       <Header />
-      <div className="w-full h-full min-h-screen bg-[#FBF4F4]">
+      <main className="flex-1 w-full">
         {children}
-      </div>
+      </main>
     </div>
   );
 }

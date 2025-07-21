@@ -38,15 +38,15 @@ export default function Header() {
     };
 
     return (
-        <header className="w-full bg-[#FBF4F4] flex items-center justify-between px-8 py-4">
+        <header className="w-full bg-[#FBF4F4] flex flex-col md:flex-row items-center 
+        justify-between px-6 md:px-8 py-4 gap-4 md:gap-0">
             <div
                 className="flex items-center gap-2 cursor-pointer"
                 onClick={() => router.push("/")}
             >
                 <img src="/logo.svg" alt="logo" className="w-12 h-12" />
             </div>
-
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 md:gap-6 flex-wrap justify-center">
                 <button
                     className={`flex items-center gap-2 font-medium px-4 py-2 rounded-md ${
                         router.pathname === "/dashboard"
@@ -70,11 +70,11 @@ export default function Header() {
                     Produtos
                 </button>
             </div>
-
-            <div className="relative flex items-center gap-4">
+            <div className="flex items-center gap-4">
                 <div className="relative">
                     <button
-                        className="flex items-center gap-2 bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white px-4 py-2 rounded-md relative"
+                        className="flex items-center gap-2 bg-[#F24D0D] hover:bg-[#F24D0D]/80
+                         text-white px-4 py-2 rounded-md relative whitespace-nowrap"
                         onClick={() => router.push("/cadastrarProduto")}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -82,17 +82,18 @@ export default function Header() {
                         <FiPlus className="w-4 h-4" />
                         Novo Produto
                         {showTooltip && (
-                            <span className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded shadow">
+                            <span className="absolute -bottom-10 left-1/2 transform -translate-x-1/2
+                             bg-black text-white text-xs px-3 py-1 rounded shadow">
                                 Tá esperando o quê? Boraa moeer!! 🚀
                             </span>
                         )}
                     </button>
                 </div>
-
                 <div className="relative">
                     <button
                         onClick={() => setOpen(!open)}
-                        className="flex items-center gap-3 px-3 py-2 bg-gray-100 rounded-md hover:bg-gray-200"
+                        className="flex items-center gap-2 px-3 py-2
+                         bg-gray-100 rounded-md hover:bg-gray-200"
                     >
                         {userFoto && (
                             <img
@@ -101,7 +102,7 @@ export default function Header() {
                                 className="w-8 h-8 rounded-full object-cover border border-gray-300"
                             />
                         )}
-                        <span className="text-sm text-gray-700">{userName}</span>
+                        <span className="text-sm text-gray-700 max-w-[100px] truncate">{userName}</span>
                         <svg
                             className={`w-4 h-4 transform transition ${open ? "rotate-180" : "rotate-0"}`}
                             fill="none"
@@ -112,12 +113,12 @@ export default function Header() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-
                     {open && (
                         <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50">
                             <button
                                 onClick={handleLogout}
-                                className="w-full flex justify-between items-center px-4 py-2 text-sm text-[#F24D0D] hover:bg-gray-100"
+                                className="w-full flex justify-between items-center px-4
+                                 py-2 text-sm text-[#F24D0D] hover:bg-gray-100"
                             >
                                 <span>Sair</span>
                                 <FiLogOut className="w-4 h-4" />
@@ -129,6 +130,7 @@ export default function Header() {
         </header>
     );
 }
+
 
 
 

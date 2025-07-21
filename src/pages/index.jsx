@@ -73,13 +73,19 @@ export default function Home() {
           <h1 className="text-3xl font-bold text-[#1D1D1D]">Seus produtos</h1>
           <p className="text-2xl text-[#666666]">Acesse e gerencie a sua lista de produtos à venda</p>
         </section>
-
-        <div className="flex w-full max-w-[1200px] gap-8 px-10 pb-20">
-          <aside className="w-[340px] bg-white rounded-xl p-5 shadow-md h-fit">
+        <div
+          className="
+            flex flex-col gap-8 px-6 pb-20 w-full max-w-[1200px] 
+            sm:flex-col
+            md:flex-col
+            lg:flex-row
+            lg:px-10
+          "
+        >
+          <aside className="w-full lg:w-[340px] bg-white rounded-xl p-5 shadow-md h-fit">
             <h2 className="font-semibold text-lg mb-4">Filtrar</h2>
             <div className="flex flex-col gap-6">
 
-              {/* Campo de busca com ícone de lupa */}
               <div className="relative w-full">
                 <FiSearch className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
@@ -90,8 +96,6 @@ export default function Home() {
                   onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
-
-              {/* Select com ícone de etiqueta */}
               <div className="relative w-full">
                 <FiTag className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <select
@@ -107,7 +111,6 @@ export default function Home() {
                   <option value="Cancelado">Cancelado</option>
                 </select>
               </div>
-
               <button
                 onClick={aplicarFiltro}
                 className="w-full bg-[#F24D0D] hover:bg-[#F24D0D]/80 text-white rounded-md py-2 font-semibold transition"
@@ -116,10 +119,18 @@ export default function Home() {
               </button>
             </div>
           </aside>
-
           <section className="flex flex-wrap gap-6 justify-start w-full items-stretch">
             {produtosFiltrados.map((produto) => (
-              <div key={produto.id} className="flex flex-col gap-2 w-[400px]">
+              <div
+                key={produto.id}
+                className="
+                  flex flex-col gap-2 
+                  w-full
+                  sm:w-full
+                  md:w-full
+                  lg:w-[400px]
+                "
+              >
                 <CardProduto
                   banner={produto.banner}
                   titulo={produto.titulo}
@@ -128,7 +139,6 @@ export default function Home() {
                   descricao={produto.descricao}
                   categoria={produto.categoria}
                 />
-
                 <div className="flex gap-2">
                   <button
                     onClick={() => router.push(`/editarProduto/${produto.id}`)}
@@ -151,6 +161,7 @@ export default function Home() {
     </PageWrapper>
   );
 }
+
 
 
 

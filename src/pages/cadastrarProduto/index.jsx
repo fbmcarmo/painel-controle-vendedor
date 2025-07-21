@@ -59,13 +59,12 @@ export default function CadastrarProduto() {
         <PageWrapper>
             <form onSubmit={handleSubmit}>
                 <div className="w-full min-h-screen flex flex-col items-center bg-[#FBF4F4]">
-                    <section className="w-full flex flex-col items-start p-10 max-w-[1200px]">
-                        <h1 className="text-3xl font-bold text-[#1D1D1D]">Novo Produto</h1>
-                        <p className="text-2xl text-[#666666]">Cadastre um produto para venda no marketplace</p>
+                    <section className="w-full flex flex-col items-start p-6 sm:p-8 md:p-10 max-w-[1200px]">
+                        <h1 className="text-2xl sm:text-3xl font-bold text-[#1D1D1D]">Novo Produto</h1>
+                        <p className="text-lg sm:text-2xl text-[#666666]">Cadastre um produto para venda no marketplace</p>
                     </section>
-
-                    <div className="flex w-full max-w-[1200px] gap-10 px-10 pb-20">
-                        <div className="flex flex-col gap-2 w-[300px]">
+                    <div className="flex flex-col md:flex-row w-full max-w-[1200px] gap-y-10 md:gap-x-10 px-6 sm:px-8 md:px-10 pb-20">
+                        <div className="flex flex-col gap-2 w-full md:max-w-[300px]">
                             <div className="w-full h-[300px] bg-[#F5EAEA] rounded-xl shadow-md 
                             flex items-center justify-center text-center text-[#333] font-semibold cursor-pointer overflow-hidden">
                                 {imagemPreview ? (
@@ -74,7 +73,7 @@ export default function CadastrarProduto() {
                                 ) : (
                                     <div className="flex flex-col items-center justify-center gap-2 text-[#F24D0D]">
                                         <FiImage size={50} />
-                                        <span className="text-sm text-gray-500">Selecione a imagem do produto</span>
+                                        <span className="text-sm text-gray-500 text-center">Selecione a imagem do produto</span>
                                     </div>
                                 )}
                             </div>
@@ -90,12 +89,10 @@ export default function CadastrarProduto() {
                                 }}
                             />
                         </div>
-
-                        <div className="flex-1 bg-white rounded-xl shadow-md p-8 flex flex-col gap-6">
-                            <h2 className="text-xl font-bold text-[#1D1D1D]">Dados do produto</h2>
-
+                        <div className="flex-1 bg-white rounded-xl shadow-md p-6 sm:p-8 flex flex-col gap-6">
+                            <h2 className="text-lg sm:text-xl font-bold text-[#1D1D1D]">Dados do produto</h2>
                             <div className="flex flex-col gap-4">
-                                <div className="flex gap-4">
+                                <div className="flex flex-col md:flex-row gap-4">
                                     <div className="flex flex-col flex-1">
                                         <label className="text-sm text-gray-700 mb-1">Título</label>
                                         <input
@@ -107,7 +104,7 @@ export default function CadastrarProduto() {
                                             outline-none px-3 py-2 bg-transparent"
                                         />
                                     </div>
-                                    <div className="flex flex-col w-[150px]">
+                                    <div className="flex flex-col w-full md:w-[150px]">
                                         <label className="text-sm text-gray-700 mb-1">Preço</label>
                                         <input
                                             type="text"
@@ -119,7 +116,6 @@ export default function CadastrarProduto() {
                                         />
                                     </div>
                                 </div>
-
                                 <div className="flex flex-col">
                                     <label className="text-sm text-gray-700 mb-1">Descrição</label>
                                     <textarea
@@ -131,8 +127,7 @@ export default function CadastrarProduto() {
                                         rows={4}
                                     />
                                 </div>
-
-                                <div className="flex gap-4">
+                                <div className="flex flex-col md:flex-row gap-4">
                                     <div className="flex flex-col flex-1">
                                         <label className="text-sm text-gray-700 mb-1">Status</label>
                                         <select
@@ -166,8 +161,7 @@ export default function CadastrarProduto() {
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="flex gap-4 justify-end pt-4">
+                            <div className="flex flex-col sm:flex-row gap-4 justify-end pt-4">
                                 <button
                                     type="button"
                                     onClick={handleCancel}
@@ -191,6 +185,7 @@ export default function CadastrarProduto() {
         </PageWrapper>
     );
 }
+
 
 
 

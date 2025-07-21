@@ -53,48 +53,44 @@ export default function Dashboard() {
 
   return (
     <PageWrapper>
-      <div className="min-h-screen bg-gray-100 p-10">
-        <div className="w-full flex flex-col items-start p-10 max-w-[1200px]">
-          <h1 className="text-3xl font-bold mb-2 text-[#1D1D1D]">Últimos 30 dias</h1>
-          <p className="text-2xl text-[#666666]">Confira as estatísticas da sua loja no último mês</p>
+      <div className="min-h-screen bg-gray-100 px-4 sm:px-6 md:px-10 py-10 flex flex-col items-center">
+        <div className="w-full flex flex-col items-start max-w-[1200px]">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-[#1D1D1D]">Últimos 30 dias</h1>
+          <p className="text-lg sm:text-2xl text-[#666666]">Confira as estatísticas da sua loja no último mês</p>
         </div>
-
-        <div className="flex flex-col md:flex-row gap-10">
-          <div className="flex flex-col gap-6 md:w-1/3">
+        <div className="flex flex-col md:flex-row gap-10 w-full max-w-[1200px] mt-10">
+          <div className="flex flex-col gap-6 w-full md:w-1/3">
             <div className="bg-white p-6 rounded-xl shadow-md border-2 border-blue-200 flex gap-4 items-center">
               <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center">
                 <FiTag size={24} className="text-blue-500" />
               </div>
               <div className="flex flex-col">
-                <h2 className="text-blue-600 font-semibold">Produtos Vendidos</h2>
-                <p className="text-3xl font-bold text-blue-400">{metrics.vendidos}</p>
+                <h2 className="text-blue-600 font-semibold text-sm">Produtos Vendidos</h2>
+                <p className="text-2xl sm:text-3xl font-bold text-blue-400">{metrics.vendidos}</p>
               </div>
             </div>
-
             <div className="bg-white p-6 rounded-xl shadow-md border-2 border-blue-200 flex gap-4 items-center">
               <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center">
                 <FiHome size={24} className="text-blue-500" />
               </div>
               <div className="flex flex-col">
-                <h2 className="text-blue-600 font-semibold">Produtos Anunciados</h2>
-                <p className="text-3xl font-bold text-blue-400">{metrics.anunciados}</p>
+                <h2 className="text-blue-600 font-semibold text-sm">Produtos Anunciados</h2>
+                <p className="text-2xl sm:text-3xl font-bold text-blue-400">{metrics.anunciados}</p>
               </div>
             </div>
-
             <div className="bg-white p-6 rounded-xl shadow-md border-2 border-blue-200 flex gap-4 items-center">
               <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center">
                 <FiUsers size={24} className="text-blue-500" />
               </div>
               <div className="flex flex-col">
-                <h2 className="text-blue-600 font-semibold">Pessoas Visitantes</h2>
-                <p className="text-3xl font-bold text-blue-400">{metrics.visitantes}</p>
+                <h2 className="text-blue-600 font-semibold text-sm">Pessoas Visitantes</h2>
+                <p className="text-2xl sm:text-3xl font-bold text-blue-400">{metrics.visitantes}</p>
               </div>
             </div>
           </div>
-
-          <div className="bg-white p-8 rounded-xl shadow-md md:w-2/3 relative">
-            <h2 className="text-xl font-bold text-[#1D1D1D] mb-6">Visitantes</h2>
-            <p className="absolute right-6 top-6 text-sm text-gray-400">26 DE JUNHO - 25 DE JULHO</p>
+          <div className="bg-white p-6 sm:p-8 rounded-xl shadow-md w-full md:w-2/3 relative">
+            <h2 className="text-lg sm:text-xl font-bold text-[#1D1D1D] mb-6">Visitantes</h2>
+            <p className="absolute right-6 top-6 text-xs sm:text-sm text-gray-400">26 DE JUNHO - 25 DE JULHO</p>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart
                 data={data}
@@ -120,6 +116,7 @@ export default function Dashboard() {
     </PageWrapper>
   );
 }
+
 
 
 
